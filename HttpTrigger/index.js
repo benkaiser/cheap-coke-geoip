@@ -10,6 +10,7 @@ module.exports = async function (context, req) {
         function geoplugin_city() { return '${geo.city.replace(/'/g, "\\'")}';}
         function geoplugin_latitude() { return '${geo.ll[0]}';}
         function geoplugin_longitude() { return '${geo.ll[1]}';}
+        if (typeof on_geo === 'function') { on_geo(); }
         `.trim();
         context.res = {
             body: builtJavascript
